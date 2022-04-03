@@ -42,44 +42,52 @@ clean code , performance, logic
 
 // one function run one function
 
-function getDataFromUser(msg,dataType=false){
-    let data = prompt(msg)
-    if(dataType) data = Number(data) // +data   data*1.0  parseInt  parseFloat
-    return data
+// function getDataFromUser(msg,dataType=false){
+//     let data = prompt(msg)
+//     if(dataType) data = Number(data) // +data   data*1.0  parseInt  parseFloat
+//     return data
+// }
+
+// function addNumbers(...values){ //arguments 
+//     let vals = [...values]  // converts arguments to array
+//     // vals.forEach((v,i)=> console.log(`${i} ==> ${v}`))
+//     // console.log(typeof vals[0])
+//     let total = 0
+//     vals.forEach( val => total += val )
+//     return total
+// }
+
+// // console.log(addNumbers(5,3,6,9,4,5))
+// // let myVal = getDataFromUser(1)
+// // console.log(typeof myVal)
+// // function subNumbers(){}
+// // function mulNumbers(){}
+// //forEach   for
+
+// function project(){
+//     let x = getDataFromUser("please enter a valid number :", 1)
+//     let y = getDataFromUser("please enter a valid number :", 1)
+//     let op = getDataFromUser("please enter a valid operator :")
+//     let result 
+//     switch(op){
+//         case "+": result =addNumbers(x,y); break;
+//         default: result = "invalid opertion"
+//     }
+//     return result
+// }
+// console.log(project())
+
+// for(;;){
+//     if(ch==0) break
+// }
+// if(true){}
+// while(true){}
+
+let users = []
+
+function addUser(){
+    //name , age, country {}
 }
-
-function addNumbers(...values){ //arguments 
-    let vals = [...values]  // converts arguments to array
-    // vals.forEach((v,i)=> console.log(`${i} ==> ${v}`))
-    // console.log(typeof vals[0])
-    let total = 0
-    vals.forEach( val => total += val )
-    return total
-}
-
-// console.log(addNumbers(5,3,6,9,4,5))
-// let myVal = getDataFromUser(1)
-// console.log(typeof myVal)
-// function subNumbers(){}
-// function mulNumbers(){}
-//forEach   for
-
-function project(){
-    let x = getDataFromUser("please enter a valid number :", 1)
-    let y = getDataFromUser("please enter a valid number :", 1)
-    let op = getDataFromUser("please enter a valid operator :")
-    let result 
-    switch(op){
-        case "+": result =addNumbers(x,y); break;
-        default: result = "invalid opertion"
-    }
-    return result
-}
-console.log(project())
-
-
-
-
 
 
 
