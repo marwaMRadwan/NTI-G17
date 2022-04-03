@@ -91,4 +91,9 @@
 // console.log(data)
 // console.log(typeof data)
 
-user = [1,2 ,5]
+// user = [1,2 ,5]
+x = "name"
+user= {name:"marwa", age:36}
+console.log(user[x]); // user.name
+
+

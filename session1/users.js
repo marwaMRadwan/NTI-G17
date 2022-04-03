@@ -30,20 +30,44 @@ const addUser = ()=>{
     allUsers.push(user)
     writeStorageData(allUsers, "users")
 }
+const printUserData = (user)=>{
+    console.log(`id: ${user.id} - name: ${user.name} - age: ${user.age} - job: ${user.job}`)
+}
 const showAllUsers = () =>{
     const allUsers = readStorageData("users")
     if(allUsers.length===0) return console.log("no users yet")
-    allUsers.forEach(user=>{
-        console.log(`id: ${user.id} - name: ${user.name} - age: ${user.age} - job: ${user.job}`)
-    })
+    allUsers.forEach(user=> printUserData(user) )
 }
-showUser = () => { }
-delUser  = () => { }
+const searchUser = (key, val,allUsers, type="s")=>{
+    let response
+    if(type!="s") response = allUsers.filter(user => user[key]==val)
+    else response = allUsers.findIndex(user=> user[key]== val)
+    return response
+}
+showUser = (id) => {
+    const allUsers = readStorageData("users")
+    let userIndex = searchUser("id", id, allUsers)
+    if(userIndex==-1) return console.log("User Not Found")
+    printUserData(allUsers[userIndex])
+}
+delUser  = (id) => { 
+    const allUsers = readStorageData("users")
+    let userIndex = searchUser("id", id, allUsers)
+    if(userIndex==-1) return console.log("User Not Found")
+    allUsers.splice(userIndex, 1)
+    writeStorageData(allUsers, "users")
+}
 editUser = () => { }
 
 
 
-// addUser()
-showAllUsers()
-//git clone link
-//git pull origin master
+
+
+
+
+
+
+
+
+
+
