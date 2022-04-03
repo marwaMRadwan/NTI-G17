@@ -57,7 +57,9 @@ delUser  = (id) => {
     allUsers.splice(userIndex, 1)
     writeStorageData(allUsers, "users")
 }
-editUser = () => { }
+editUser = () => { 
+    
+}
 
 
 
