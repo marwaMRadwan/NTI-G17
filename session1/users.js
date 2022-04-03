@@ -1,10 +1,10 @@
-
-const readStorageData = ()=> {
+const readStorageData = (storageKey, dataType= null)=> {
     let data
     try{
-        data = JSON.parse(localStorage.getItem("users"))
-        // console.log(data)
-        if(!Array.isArray(data)) throw new Error("invalid")
+        data = localStorage.getItem(storageKey)
+        if(!dataType) data = JSON.parse(data)
+        if(!Array.isArray(data) && !dataType ) 
+            throw new Error("invalid")
     }
     catch(e){
         data = []
@@ -12,4 +12,7 @@ const readStorageData = ()=> {
     return data
 }
 
-console.log(readStorageData())
+const writeStorageData = (data, storageKey)=>{
+    localStorage.setItem(storageKey, JSON.stringify(data))
+}
+
