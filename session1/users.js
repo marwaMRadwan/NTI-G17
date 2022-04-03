@@ -57,19 +57,14 @@ delUser  = (id) => {
     allUsers.splice(userIndex, 1)
     writeStorageData(allUsers, "users")
 }
-editUser = () => { 
-    
+editUser = (id) => {    
+    const allUsers = readStorageData("users")
+    const userIndex = searchUser("id", id, allUsers)
+    if(userIndex==-1) return console.log("user not found")
+    let userData = userObjCreator()
+    userData.id = id
+    allUsers[userIndex] = userData
+    writeStorageData(allUsers, "users")   
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
+editUser(1648985525007)
