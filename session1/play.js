@@ -84,9 +84,11 @@
 //     return element.albumId==15
 // })
 // console.log(d)
-let user = {name:"marwa", age:36, job:"developer"}
-localStorage.setItem("x", JSON.stringify(user))
-let d = localStorage.getItem("x")
-let data = JSON.parse(d)
-console.log(data)
-console.log(typeof data)
+// let user = {name:"marwa", age:36, job:"developer"}
+// localStorage.setItem("x", JSON.stringify(user))
+// let d = localStorage.getItem("x")
+// let data = JSON.parse(d)
+// console.log(data)
+// console.log(typeof data)
+
+user = [1,2 ,5]

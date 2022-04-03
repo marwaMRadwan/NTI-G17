@@ -1,5 +1,4 @@
 const getDataFromUser= (msg)=> prompt(msg)
-
 const readStorageData = (storageKey, dataType= null)=> {
     let data
     try{
@@ -18,6 +17,7 @@ const writeStorageData = (data, storageKey)=>{
 }
 const userObjCreator = () =>{
     let userData = {
+        id: Date.now(), // Mat.radom*90000
         name: getDataFromUser("please enter your name: "),
         age: getDataFromUser("please enter your age: "),
         job: getDataFromUser("please enter your job: ")
@@ -30,5 +30,20 @@ const addUser = ()=>{
     allUsers.push(user)
     writeStorageData(allUsers, "users")
 }
+const showAllUsers = () =>{
+    const allUsers = readStorageData("users")
+    if(allUsers.length===0) return console.log("no users yet")
+    allUsers.forEach(user=>{
+        console.log(`id: ${user.id} - name: ${user.name} - age: ${user.age} - job: ${user.job}`)
+    })
+}
+showUser = () => { }
+delUser  = () => { }
+editUser = () => { }
 
-addUser()
+
+
+// addUser()
+showAllUsers()
+//git clone link
+//git pull origin master
