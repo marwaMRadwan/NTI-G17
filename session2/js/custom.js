@@ -1,6 +1,7 @@
 const addUser = document.querySelector("#addUser")
 const userHeads = ["name", "age", "job", "country"]
 const dataWrapper= document.querySelector("#dataWrapper")
+const singleData = document.querySelector("#singleData")
 // read from storage
 const readFromStorage = (storageKey="users") =>{
     let data
@@ -46,13 +47,15 @@ const delUser = (allUsers, index)=>{
     writeToStorage(allUsers)
     drawData(allUsers)
 }
-const singleUserDraw = (user, index, allUsers) =>{
-    const tr = createMyOwnElement(dataWrapper, "tr")
+const singleUserDraw = (user, index, allUsers, mainParent) =>{
+    singleData.textContent=""
+    const tr = createMyOwnElement(mainParent, "tr")
     createMyOwnElement(tr, "td", index+1)
     createMyOwnElement(tr, "td", user.id)
     userHeads.forEach(head=> createMyOwnElement(tr, "td", user[head]))
     const td = createMyOwnElement(tr, "td")
     const showBtn = createMyOwnElement(td, "button", "show", "btn btn-primary mx-2")
+    showBtn.addEventListener("click", (e)=>singleUserDraw(user, index,allUsers, singleData))
     const editBtn = createMyOwnElement(td, "button", "Edit", "btn btn-success mx-2")
     const delBtn = createMyOwnElement(td, "button", "delete", "btn btn-danger mx-2")
     delBtn.addEventListener('click', (e) => delUser(allUsers, index))
@@ -65,7 +68,7 @@ const drawNoData = () =>{
 const drawData = (allUsers) =>{
     dataWrapper.innerHTML=""
     if(allUsers.length==0) drawNoData()
-    else allUsers.forEach((user,index)=> singleUserDraw(user, index, allUsers))
+    else allUsers.forEach((user,index)=> singleUserDraw(user, index, allUsers, dataWrapper))
 }
 // create 
 if(addUser){
