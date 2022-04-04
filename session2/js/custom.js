@@ -32,20 +32,37 @@ if(addUser){
     })    
 }
 // read 
-const createMyOwnElement = (parent, ele, text=null)=>{
+const createMyOwnElement = (parent, ele,text=null, classes= null, attributes = null)=>{
     const myElement = document.createElement(ele)
     parent.appendChild(myElement)
     if(text) myElement.textContent = text
+    if(classes) myElement.classList = classes
+    if(attributes){
+        attributes.forEach(attr=>{
+            myElement.setAttribute(attr.attrName, attr.attrVal)
+        })
+    }
     return myElement
 }
 if(dataWrapper){
     const allUsers = readFromStorage()
+    if(allUsers.length==0){
+        const tr = createMyOwnElement(dataWrapper, "tr", null, "alert alert-danger")
+        const attr = [
+            { attrName:"colspan", attrVal: 6 }, 
+            { attrName:"name", attrVal:"x"  },
+            { attrName:"class", attrVal :"test"}
+        ]
+        const td= createMyOwnElement(tr, "td", "no users yet", null, attr)
+    }
+    else{
     allUsers.forEach((user,index)=>{
         const tr = createMyOwnElement(dataWrapper, "tr")
         createMyOwnElement(tr, "td", index+1)
         createMyOwnElement(tr, "td", user.id)
         userHeads.forEach(head=> createMyOwnElement(tr, "td", user[head]))
     })
+}
 }
 
 
