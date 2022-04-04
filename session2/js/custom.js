@@ -57,6 +57,10 @@ const singleUserDraw = (user, index, allUsers, mainParent) =>{
     const showBtn = createMyOwnElement(td, "button", "show", "btn btn-primary mx-2")
     showBtn.addEventListener("click", (e)=>singleUserDraw(user, index,allUsers, singleData))
     const editBtn = createMyOwnElement(td, "button", "Edit", "btn btn-success mx-2")
+    editBtn.addEventListener("click", ()=>{
+        localStorage.setItem("editID", index)
+        window.location.href = "edit.html"
+    })
     const delBtn = createMyOwnElement(td, "button", "delete", "btn btn-danger mx-2")
     delBtn.addEventListener('click', (e) => delUser(allUsers, index))
 }
@@ -89,3 +93,26 @@ if(dataWrapper){
     const allUsers = readFromStorage()
     drawData(allUsers)
 }
+
+const editUser = document.querySelector("#editUser")
+if(editUser){
+    const index = localStorage.getItem("editID")
+    if(!index) window.location.href="index.html"
+    const allUsers = readFromStorage()
+    userHeads.forEach(head=> editUser.elements[head].value = allUsers[index][head])
+    editUser.addEventListener("submit", (e)=>{
+        e.preventDefault()
+        userHeads.forEach(head=> allUsers[index][head] = editUser.elements[head].value )
+        writeToStorage(allUsers)
+        localStorage.removeItem("editID")
+        window.location.href="index.html"
+    })
+}
+
+
+
+
+
+
+
+
