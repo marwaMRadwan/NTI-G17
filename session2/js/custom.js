@@ -44,10 +44,24 @@ const createMyOwnElement = (parent, ele,text=null, classes= null, attributes = n
     }
     return myElement
 }
+const createMyOwnElement1 = (myObj)=>{
+    const myElement = document.createElement(myObj.ele)
+    myObj.parent.appendChild(myElement)
+    if(myObj.text) myElement.textContent = myObj.text
+    if(myObj.classes) myElement.classList = myObj.classes
+    if(myObj.attributes){
+        myObj.attributes.forEach(attr=>{
+            myElement.setAttribute(attr.attrName, attr.attrVal)
+        })
+    }
+    return myElement
+}
 if(dataWrapper){
     const allUsers = readFromStorage()
     if(allUsers.length==0){
-        const tr = createMyOwnElement(dataWrapper, "tr", null, "alert alert-danger")
+        obj= {parent:dataWrapper, ele:"tr", classes:"alert alert-danger"}
+        // const tr = createMyOwnElement(dataWrapper, "tr", null, "alert alert-danger")
+        const tr = createMyOwnElement1(obj)
         const attr = [
             { attrName:"colspan", attrVal: 6 }, 
             { attrName:"name", attrVal:"x"  },
