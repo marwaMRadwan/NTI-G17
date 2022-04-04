@@ -1,0 +1,2 @@
+bank 
+client=> name, intialbalance, accountNum, transactions = []
