@@ -17,21 +17,6 @@ const readFromStorage = (storageKey="users") =>{
 const writeToStorage = (data=[], storageKey="users")=>{
     localStorage.setItem(storageKey, JSON.stringify(data))
 }
-// create 
-if(addUser){
-    addUser.addEventListener("submit", function(e){
-        e.preventDefault()
-        // console.log(this.elements.name.value)
-        let user = { id:Date.now() }
-        userHeads.forEach( head => user[head] = this.elements[head].value)
-        const allUsers = readFromStorage()
-        allUsers.push(user)
-        writeToStorage(allUsers)
-        this.reset()
-        window.location.href = "index.html";
-    })    
-}
-// read 
 const createMyOwnElement = (parent, ele,text=null, classes= null, attributes = null)=>{
     const myElement = document.createElement(ele)
     parent.appendChild(myElement)
@@ -56,31 +41,48 @@ const createMyOwnElement1 = (myObj)=>{
     }
     return myElement
 }
+const delUser = (allUsers, index)=>{
+    allUsers.splice(index,1)
+    writeToStorage(allUsers)
+    drawData(allUsers)
+}
+const singleUserDraw = (user, index, allUsers) =>{
+    const tr = createMyOwnElement(dataWrapper, "tr")
+    createMyOwnElement(tr, "td", index+1)
+    createMyOwnElement(tr, "td", user.id)
+    userHeads.forEach(head=> createMyOwnElement(tr, "td", user[head]))
+    const td = createMyOwnElement(tr, "td")
+    const showBtn = createMyOwnElement(td, "button", "show", "btn btn-primary mx-2")
+    const editBtn = createMyOwnElement(td, "button", "Edit", "btn btn-success mx-2")
+    const delBtn = createMyOwnElement(td, "button", "delete", "btn btn-danger mx-2")
+    delBtn.addEventListener('click', (e) => delUser(allUsers, index))
+}
+const drawNoData = () =>{
+    const tr = createMyOwnElement(dataWrapper, "tr", null, "alert alert-danger")
+    const attr = [ { attrName:"colspan", attrVal: 7 } ]
+    createMyOwnElement(tr, "td", "no users yet", null, attr)
+}
+const drawData = (allUsers) =>{
+    dataWrapper.innerHTML=""
+    if(allUsers.length==0) drawNoData()
+    else allUsers.forEach((user,index)=> singleUserDraw(user, index, allUsers))
+}
+// create 
+if(addUser){
+    addUser.addEventListener("submit", function(e){
+        e.preventDefault()
+        // console.log(this.elements.name.value)
+        let user = { id:Date.now() }
+        userHeads.forEach( head => user[head] = this.elements[head].value)
+        const allUsers = readFromStorage()
+        allUsers.push(user)
+        writeToStorage(allUsers)
+        this.reset()
+        window.location.href = "index.html";
+    })    
+}
+// read 
 if(dataWrapper){
     const allUsers = readFromStorage()
-    if(allUsers.length==0){
-        obj= {parent:dataWrapper, ele:"tr", classes:"alert alert-danger"}
-        // const tr = createMyOwnElement(dataWrapper, "tr", null, "alert alert-danger")
-        const tr = createMyOwnElement1(obj)
-        const attr = [
-            { attrName:"colspan", attrVal: 6 }, 
-            { attrName:"name", attrVal:"x"  },
-            { attrName:"class", attrVal :"test"}
-        ]
-        const td= createMyOwnElement(tr, "td", "no users yet", null, attr)
-    }
-    else{
-    allUsers.forEach((user,index)=>{
-        const tr = createMyOwnElement(dataWrapper, "tr")
-        createMyOwnElement(tr, "td", index+1)
-        createMyOwnElement(tr, "td", user.id)
-        userHeads.forEach(head=> createMyOwnElement(tr, "td", user[head]))
-    })
+    drawData(allUsers)
 }
-}
-
-
-
-// update 
-// delete 
-// show single
