@@ -17,7 +17,7 @@ const apiHandle = async(apiLink, cb) =>{
         cb(false, e.message)
     }
 }
-apiHandle(apiLink, (res)=>{
+apiHandle(apiLink, (res, err)=>{
     if(err) console.log(err)
     else console.log(res)
 })
