@@ -6,7 +6,7 @@ const apiLink = "https://jsonplaceholder.typicode.com/photos?_limit=10"
 //     .catch(err=> console.log(err))
 // })
 // .catch(e=> console.log(e))
-
+//post get patch-put  delete
 const apiHandle = async(apiLink, cb) =>{
     try{
         let data = await fetch(apiLink)
