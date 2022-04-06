@@ -6,7 +6,7 @@ const writeDataToJSON = (fileName, data) => {
         console.log(chalk.green(`data added to file ${fileName}`));
     }
     catch(e){
-        console.log(chalk.red("invalid data"))
+        console.log(chalk.red("File Reseted"))
     }
 }
 

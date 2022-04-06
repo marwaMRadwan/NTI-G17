@@ -1,4 +1,4 @@
-const deal = require('./controllers/dealWithJson')
+// const deal = require('./controllers/dealWithJson')
 // const d = deal.readDataFromJSON("tasks.json")
 // console.log(d);
 
@@ -9,3 +9,29 @@ const deal = require('./controllers/dealWithJson')
 //     {id:4,title:"d", content:"dd"},
 // ]
 // deal.writeDataToJSON("tasks.json", data)
+
+const yargs = require("yargs")
+const tasks = require('./controllers/tasks')
+yargs.command({
+    command:"add",
+    describe:"add new task data",
+    builder:{
+        id:  { default: Date.now() },
+        title:{type:"string", demandOption:true},
+        content:{type:"string", demandOption:true}
+    },
+    handler: (argv)=>tasks.add(argv)
+})
+
+yargs.argv
+
+
+
+
+
+
+
+
+
+
+
