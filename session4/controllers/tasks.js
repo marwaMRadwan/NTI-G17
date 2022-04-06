@@ -41,4 +41,20 @@ const showSingle = (searchKey, searchVal)=>{
         console.log(e.message)
     }
 }
-module.exports = { add, showAll , showSingle}
+const edit = (data) =>{
+    try{
+        const allTasks = deal.readDataFromJSON("tasks.json")
+        const index = searchInTasks(allTasks, data.searchKey, data.searchVal)
+        if(index==-1) throw new Error('not found')
+        dataHeaders = ["title", "content"]
+        dataHeaders.forEach(head=>{
+            if(data[head]) allTasks[index][head] = data[head]
+        })
+        deal.writeDataToJSON("tasks.json", allTasks)
+        console.log('data updated');
+    }
+    catch(e){
+        console.log(e.message)
+    }
+}
+module.exports = { add, showAll , showSingle, edit}

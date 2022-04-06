@@ -36,6 +36,17 @@ yargs.command({
     },
     handler: (argv)=>tasks.showSingle(argv.searchKey, argv.searchVal)
 })
+yargs.command({
+    command:"edit",
+    describe:"add new task data",
+    builder:{
+        searchKey:  { type:"string", demandOption:true },
+        searchVal:{type:"string", demandOption:true},
+        title:{type:"string"},
+        content:{type:"string"}
+    },
+    handler: (argv)=>tasks.edit(argv)
+})
 yargs.argv
 
 
