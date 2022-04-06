@@ -9,9 +9,14 @@ const apiURL = "https://jsonplaceholder.typicode.com/photos?_limit=10"
 // req.end()
 
 const fetch = require('node-fetch');
-const x = async()=>{
+const x = async(url,callback)=>{
     // const response = await fetch(apiURL);
-    const data = await (await fetch(apiURL)).json();
-    console.log(data);
+    try{
+        const data = await (await fetch(url)).json();
+        callback(data, null);    
+    }
+    catch(e){
+        callback(null, e.message)
+    }
 }
-x()
+module.exports = x

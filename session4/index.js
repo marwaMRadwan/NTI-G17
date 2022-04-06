@@ -57,6 +57,16 @@ yargs.command({
     handler: (argv)=>tasks.del(argv.searchKey, argv.searchVal)
 })
 
+const apiReq = require("./apiRequest")
+yargs.command({
+    command:"callApi",
+    builder:{ url: { type:"string", demandOption:true}},
+    handler: (argv)=> apiReq(argv, (data, err)=>{
+        if(err) return console.log(err)
+        console.log(data)
+    })
+})
+
 yargs.argv
 
 
