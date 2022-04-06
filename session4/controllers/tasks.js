@@ -57,4 +57,17 @@ const edit = (data) =>{
         console.log(e.message)
     }
 }
-module.exports = { add, showAll , showSingle, edit}
+const del = (searchKey, searchVal)=>{
+    try{
+        const allTasks = deal.readDataFromJSON("tasks.json")
+        let task = searchInTasks(allTasks, searchKey, searchVal)
+        if(task==-1) throw new Error("task not found")
+        allTasks.splice(task, 1)
+        deal.writeDataToJSON("tasks.json", allTasks)
+    }
+    catch(e){
+        console.log(e.message)
+    }
+}
+
+module.exports = { add, showAll , showSingle, edit, del}

@@ -47,6 +47,16 @@ yargs.command({
     },
     handler: (argv)=>tasks.edit(argv)
 })
+yargs.command({
+    command:"del",
+    describe:"delete single task data",
+    builder:{
+        searchKey:  { type:"string", demandOption:true },
+        searchVal:{type:"string", demandOption:true}
+    },
+    handler: (argv)=>tasks.del(argv.searchKey, argv.searchVal)
+})
+
 yargs.argv
 
 
