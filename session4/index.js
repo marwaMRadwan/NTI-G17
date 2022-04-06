@@ -22,7 +22,11 @@ yargs.command({
     },
     handler: (argv)=>tasks.add(argv)
 })
-
+yargs.command({
+    command:"showAll",
+    describe:"show all tasks",
+    handler: ()=> tasks.showAll()
+})
 yargs.argv
 
 
