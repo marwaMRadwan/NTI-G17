@@ -27,6 +27,15 @@ yargs.command({
     describe:"show all tasks",
     handler: ()=> tasks.showAll()
 })
+yargs.command({
+    command:"showSingle",
+    describe:"show single task data",
+    builder:{
+        searchKey:  { type:"string", demandOption:true },
+        searchVal:{type:"string", demandOption:true}
+    },
+    handler: (argv)=>tasks.showSingle(argv.searchKey, argv.searchVal)
+})
 yargs.argv
 
 
