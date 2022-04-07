@@ -1,10 +1,22 @@
 const deal = require("./dealWithJson")
+const showAll = () =>{
+    const allTasks = deal.readDataFromJSON("tasks.json")
+    return allTasks
+}
+const showSingle = (searchKey, searchVal)=>{
+    try{
+        const allTasks = deal.readDataFromJSON("tasks.json")
+        let task = searchInTasks(allTasks, searchKey, searchVal, "singleData")
+        if(!task) throw new Error("task not found")
+        return task
+    }
+    catch(e){
+        return false
+    }
+}
+
 const createTaskObj = (data)=>{
     return { id:data.id, title:data.title, content:data.content }
-}
-const printTaskObj = (task)=>{
-    console.log(`id: ${task.id} - title:${task.title} - content:${task.content}
-------------------------------------------------------`)
 }
 const searchInTasks = (allTasks, searchKey, searchVal, searchType="singleIndex")=>{
     if(searchType=='singleIndex')
@@ -21,21 +33,6 @@ const add = (data) =>{
         let task = createTaskObj(data)
         allTasks.push(task)
         deal.writeDataToJSON('tasks.json', allTasks)    
-    }
-    catch(e){
-        console.log(e.message)
-    }
-}
-const showAll = () =>{
-    const allTasks = deal.readDataFromJSON("tasks.json")
-    return allTasks
-}
-const showSingle = (searchKey, searchVal)=>{
-    try{
-        const allTasks = deal.readDataFromJSON("tasks.json")
-        let task = searchInTasks(allTasks, searchKey, searchVal, "singleData")
-        if(!task) throw new Error("task not found")
-        printTaskObj(task)
     }
     catch(e){
         console.log(e.message)
@@ -70,4 +67,4 @@ const del = (searchKey, searchVal)=>{
     }
 }
 
-module.exports = { add, showAll , showSingle, edit, del}
+module.exports = {showAll, showSingle}

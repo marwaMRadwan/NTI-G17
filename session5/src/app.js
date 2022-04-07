@@ -34,5 +34,13 @@ app.get("/", (req, res)=>{
     const tasks = taskController.showAll()
     res.render('allTasks', { pageTitle: "all Tasks", tasks })
 })
-
+app.get('/tasks/:id', (req,res)=>{
+    // res.send({
+    //     params:req.params,
+    //     query: req.query
+    // })
+    const id = req.params.id
+    const t = taskController.showSingle("id", id)
+    res.render('single', {pageTitle:"single", t})
+})
 module.exports = app

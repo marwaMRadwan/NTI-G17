@@ -1,0 +1,23 @@
+{{>header}}
+{{>nav}}
+<section class="container my-3">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>album id</th>
+                <th>id</th>
+                <th>title</th>
+                <th>url</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{t.albumId}}</td>
+                <td>{{t.id}}</td>
+                <td>{{t.title}}</td>
+                <td><img src="{{t.url}}" class="img-fluid" width="50" height="50"></td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+{{>footer}}
