@@ -1,0 +1,29 @@
+{{>header}}
+{{>nav}}
+<section class="container my-3">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>album id</th>
+                <th>id</th>
+                <th>title</th>
+                <th>url</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each tasks}}
+            <tr>
+                <td>{{this.albumId}}</td>
+                <td>{{this.id}}</td>
+                <td>{{this.title}}</td>
+                <td><img src="{{this.url}}" class="img-fluid" width="50" height="50"></td>
+                <td>
+                    <a href="tasks/{{this.id}}" class="btn btn-primary">Show</a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</section>
+{{>footer}}

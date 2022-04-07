@@ -1,7 +1,7 @@
 const express = require("express")
 const path = require("path")
 const hbs = require("hbs")
-
+const taskController = require("../controllers/tasks")
 const app = express()
 
 const staticDir = path.join(__dirname, '../frontend/public')
@@ -14,7 +14,25 @@ app.set('view engine', 'hbs')
 app.set('views', viewsDir)
 hbs.registerPartials(layoutsDir)
 
-app.get('/', (req,res)=>{
-    res.render('home')
+// app.get('/', (req,res)=>{
+//     res.render('home', {
+//         pageTitle:"home page",
+//         siteName:"session5",
+//         name:"marwa",
+//         age:36
+//     })
+// })
+// app.get('/p2', (req,res)=>{
+//     user = {name:"marwa", age:36}
+//     res.render('p2', {
+//         pageTitle:"p2 page",
+//         siteName:"session5",
+//         user
+//     })
+// })
+app.get("/", (req, res)=>{
+    const tasks = taskController.showAll()
+    res.render('allTasks', { pageTitle: "all Tasks", tasks })
 })
+
 module.exports = app
