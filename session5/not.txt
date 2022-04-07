@@ -1,0 +1,3 @@
+path => join file location 
+static => css, g=html, ,,,,,
+view engine => hbs 
