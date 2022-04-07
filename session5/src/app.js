@@ -43,4 +43,22 @@ app.get('/tasks/:id', (req,res)=>{
     const t = taskController.showSingle("id", id)
     res.render('single', {pageTitle:"single", t})
 })
+
+const mainURL = 'https://jsonplaceholder.typicode.com/users'
+const apis = require('../controllers/apis')
+app.get("/users", (req,res)=>{
+    apis(mainURL, (users, err)=>{
+        if(err) return res.send(err)
+        res.send(users)
+    })
+})
+
+app.get("/users/:id", (req,res)=>{
+    apis(`${mainURL}/${req.params.id}`, (user, err)=>{
+        if(err) return res.send(err)
+        res.send(user)
+    })
+})
+
+
 module.exports = app
