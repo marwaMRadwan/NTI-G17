@@ -10,6 +10,14 @@ class User{
                 pageTitle:"Add New User"
         })
     }
+    static addPost = (req,res)=>{
+        res.render("addPost", {pageTitle:"add User (post)"})
+    }
+    static addPostLogic = (req,res)=>{
+        const user = { ...req.body, id: Date.now(), addresses: [] }
+        userHelper.add(user)
+        return res.redirect('/')
+    }
     static showAll = (req,res)=>{
         res.render("all", {
             pageTitle:"Show All Users"

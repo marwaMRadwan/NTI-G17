@@ -3,6 +3,8 @@ const hbs = require("hbs")
 const path = require("path")
 const app = express()
 
+app.use(express.urlencoded({extended:true}))
+
 app.set("view engine", "hbs")
 app.set("views", path.join(__dirname, 'resources/views'))
 
