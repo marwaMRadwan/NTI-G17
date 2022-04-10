@@ -1,3 +1,4 @@
+const userHelper = require("../helper/user.helper")
 class User{
     static add = (req,res)=>{
         res.render("add", {
