@@ -1,8 +1,13 @@
 const userHelper = require("../helper/user.helper")
 class User{
     static add = (req,res)=>{
+        if(req.query.name&&req.query.email&&req.query.age&&req.query.password){
+            const user = { ...req.query, id: Date.now(), addresses: [] }
+            userHelper.add(user)
+            return res.redirect('/')
+        }
         res.render("add", {
-            pageTitle:"Add New User"
+                pageTitle:"Add New User"
         })
     }
     static showAll = (req,res)=>{
