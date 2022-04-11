@@ -53,6 +53,19 @@ class User{
         }
 
     }    
+    static addAddr=(userId, data) =>{
+        try{
+            const allUsers = deal.readDataFromJSON(fName)
+            const userIndex = allUsers.findIndex(u=> u.id==userId)
+            if(userIndex==-1) throw new Error()
+            allUsers[userIndex].addresses.push(data)
+            deal.writeDataToJSON(fName, allUsers)
+            return true
+        }
+        catch(e){
+            return false
+        }
+    }
 }
 
 module.exports = User

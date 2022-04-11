@@ -47,11 +47,19 @@ class User{
         if(isUpdated) res.redirect('/')
         else res.send("error in update")
     }
-
     static delUser = (req,res)=>{
         const isDeleted = userHelper.del(req.params.id)
         isDeleted? res.redirect("/"): res.send('error on deleting data')
     }
+    static addAddr = (req,res)=>{
+        res.render("addAddr", {pageTitle:"add address"})
+    }
+    static addAddrLogic = (req,res)=>{
+        const status = userHelper.addAddr(req.params.id, req.body)
+        if(status) return res.redirect(`/single/${req.params.id}`)
+        res.send("invalid user id")
+    }
+
 }
 //if we use static
 module.exports = User
