@@ -31,7 +31,8 @@ class User{
         res.render("single", {
             pageTitle:"Show Single User",
             user,
-            ifFound: user? true: false
+            ifFound: user? true: false,
+            hasAddr: user.addresses.length==0 ? false: true
         })
     }
     static editSingle = (req,res)=>{
@@ -48,7 +49,8 @@ class User{
     }
 
     static delUser = (req,res)=>{
-        res.send("delete user")
+        const isDeleted = userHelper.del(req.params.id)
+        isDeleted? res.redirect("/"): res.send('error on deleting data')
     }
 }
 //if we use static

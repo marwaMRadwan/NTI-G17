@@ -29,11 +29,18 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>addr type</td>
-                <td>addr Details</td>
+            {{#unless hasAddr}}
+            <tr class="alert alert-danger">
+                <td colspan="2" class="text-center">no addresses ye</td>
             </tr>
-
+            {{else}}
+            {{#each user.addresses}}
+            <tr>
+                <td>{{this.addrType}}</td>
+                <td>{{this.addrDetails}}</td>
+            </tr>
+            {{/each}}
+            {{/unless}}
         </tbody>
     </table>
     {{/unless}}

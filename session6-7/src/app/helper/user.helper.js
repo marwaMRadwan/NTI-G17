@@ -40,6 +40,18 @@ class User{
         }
     }
     static del = (userId)=>{
+        try{
+            const allUsers = deal.readDataFromJSON(fName)
+            const userIndex = allUsers.findIndex(u=> u.id==userId)
+            if(userIndex==-1) throw new Error()
+            allUsers.splice(userIndex,1)
+            deal.writeDataToJSON(fName, allUsers)
+            return true
+        }
+        catch(e){
+            return false
+        }
+
     }    
 }
 
