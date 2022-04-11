@@ -11,5 +11,7 @@ router.get("/single/:id", userControl.showSingle)
 router.get("/del/:id", userControl.delUser)
 router.get("/addAddr/:id", userControl.addAddr)
 router.post("/addAddr/:id", userControl.addAddrLogic)
-
+router.get("/editAddr/:userId/:addrId", userControl.editAddr)
+router.post("/editAddr/:userId/:addrId", userControl.editAddrLogic)
+router.get("/delAddr/:userId/:addrId", userControl.delAddr)
 module.exports = router

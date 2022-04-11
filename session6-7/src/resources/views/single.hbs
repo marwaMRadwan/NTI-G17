@@ -38,6 +38,10 @@
             <tr>
                 <td>{{this.addrType}}</td>
                 <td>{{this.addrDetails}}</td>
+                <td>
+                    <a href="/editAddr/{{this.userId}}/{{this.id}}" class="btn btn-warining">Edit</a>
+                    <a href="/delAddr/{{this.userId}}/{{this.id}}" class="btn btn-danger">Delete</a>
+                </td>
             </tr>
             {{/each}}
             {{/unless}}

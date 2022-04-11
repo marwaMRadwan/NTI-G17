@@ -59,8 +59,31 @@ class User{
         if(status) return res.redirect(`/single/${req.params.id}`)
         res.send("invalid user id")
     }
+//     router.get("/editAddr/:userId/:addrId", userControl.editAddr)
+static editAddr = (req,res)=>{
+    const addrId = req.params.addrId
+    const userId = req.params.userId
+    const addr = userHelper.getAddressDetails(userId, addrId)
+    res.render("editAddr", {addr})
 
 }
+// router.post("/editAddr/:userId/:addrId", userControl.editAddrLogic)
+static editAddrLogic = (req,res)=>{
+    const addrId = req.params.addrId
+    const userId = req.params.userId
+    userHelper.editAddressLogic(userId, addrId, req.body)
+    res.redirect(`/single/${userId}`)
+}
+// router.get("/delAddr/:userId/:addrId", userControl.delAddr)
+static delAddr = (req,res)=>{
+    const addrId = req.params.addrId
+    const userId = req.params.userId
+    userHelper.delAddr(userId, addrId)
+    res.redirect(`/single/${userId}`)
+
+}
+}
+
 //if we use static
 module.exports = User
 
