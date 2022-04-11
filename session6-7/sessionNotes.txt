@@ -1,0 +1,5 @@
+hbs => add, edit, del, show all, show single
+
+User Register => name, age, email, password, addresses = [
+    {id, addType, addDetails}
+]

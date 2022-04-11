@@ -1,0 +1,41 @@
+{{>header}}
+{{>navbar}}
+<section class="container my-4">
+    <h4 class="text-primary">single Users</h4>
+    {{#unless ifFound}}
+    <div class="alert alert-danger">
+        No Users found
+    </div>
+    {{else}}
+    <table class="table table-stripped">
+        <tr>
+            <td colspan="2">Id: {{user.id}}</td>
+        </tr>
+        <tr>
+            <td>Name: {{user.name}}</td>
+            <td>Age: {{user.age}}</td>
+        </tr>
+        <tr>
+            <td>email: {{user.email}}</td>
+            <td>password: {{user.password}}</td>
+        </tr>
+    </table>
+    <h4>Addresses</h4>
+    <table class="table table-borderd">
+        <thead>
+            <tr>
+                <th>addr type</th>
+                <th>addr Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>addr type</td>
+                <td>addr Details</td>
+            </tr>
+
+        </tbody>
+    </table>
+    {{/unless}}
+</section>
+{{>footer}}
