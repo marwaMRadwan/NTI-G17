@@ -1,0 +1,14 @@
+sql => structure query language
+table => attributes => attribute=> type, conditions
+user
+name  age
+marwa null
+
+nosql
+no structure => collections => documents 
+[
+    {name:"marwa"},
+    {name:"nouran", age :28, status: true}
+]
+
+mongodb , mongoose

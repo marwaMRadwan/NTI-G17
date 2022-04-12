@@ -3,3 +3,7 @@ hbs => add, edit, del, show all, show single
 User Register => name, age, email, password, addresses = [
     {id, addType, addDetails}
 ]
+
+
+load => 1000*10 => 10000
+loops , ....=> 10

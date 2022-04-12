@@ -70,7 +70,6 @@ class User{
             return false
         }
     }
-
     static getAddressDetails = (userId, addrId)=>{
         try{
             const allUsers = deal.readDataFromJSON(fName)
