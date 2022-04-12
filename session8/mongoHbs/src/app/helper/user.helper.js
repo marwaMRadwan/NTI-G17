@@ -1,4 +1,5 @@
 const con = require("../../../db/dbConnect")
+const ObjectId = require("mongodb").ObjectId
 class User{
     static showAll = (cb) =>{
         con( ( error, db ) => {
@@ -6,58 +7,60 @@ class User{
             db.collection('user').find().toArray( (e,data) => cb(data) )
         })
     }
-    static showSingle = (userId)=>{
-        // const users = deal.readDataFromJSON(fName)
-        // const data = users.find(u=> u.id==userId)
-        // data.addresses.forEach((addr, i)=>{
-        //     addr.userId=userId,
-        //     addr.id = i
-        // })
-        // return data
+    static showSingle = (userId, cb)=>{
+        con( ( error, db ) => {
+            if(error) return false
+            db.collection('user').findOne({_id:new ObjectId(userId)},
+            (e, data)=>{
+                data.addresses.forEach((addr, i)=>{
+                    addr.userId=userId,
+                    addr.id = i
+                })
+                cb(false, data)
+            })
+        })
     }
-    static add = (data) =>{
-        // try{
-        //     const allUsers = deal.readDataFromJSON(fName)
-        //     allUsers.push(data)
-        //     deal.writeDataToJSON(fName, allUsers)
-        //     return true   
-        // }
-        // catch(e){
-        //     return false
-        // }
+    static add = (data, cb) =>{
+        con( ( error, db ) => {
+            if(db) 
+                db.collection('user').insertOne(data, (err, result)=>{
+                    cb(result)
+                })
+        })
     }
-    static edit = (userId, newData) =>{
-        // try{
-        //     const allUsers = deal.readDataFromJSON(fName)
-        //     const userIndex = allUsers.findIndex(u=> u.id==userId)
-        //     if(userIndex==-1) throw new Error()
-        //     const user = {
-        //         id:userId, 
-        //         ...newData, 
-        //         addresses: allUsers[userIndex].addresses
-        //     }
-        //     allUsers[userIndex] = user
-        //     deal.writeDataToJSON(fName, allUsers)
-        //     return true
-        // }
-        // catch(e){
-        //     return false
-        // }
-    }
-    static del = (userId)=>{
-        // try{
-        //     const allUsers = deal.readDataFromJSON(fName)
-        //     const userIndex = allUsers.findIndex(u=> u.id==userId)
-        //     if(userIndex==-1) throw new Error()
-        //     allUsers.splice(userIndex,1)
-        //     deal.writeDataToJSON(fName, allUsers)
-        //     return true
-        // }
-        // catch(e){
-        //     return false
-        // }
-
+    static del = (userId, cb)=>{
+        try{
+            const userIdObj =new ObjectId(userId)
+            con((err,db)=>{
+                if(err) return cb(err, false)
+                db.collection('user')
+                .deleteOne({_id:userIdObj})
+                .then(cb(false, true))
+                .catch(e=>cb(e, false))
+            })
+        }
+        catch(er){
+            cb(er, false)
+        }
     }    
+    static edit = (userId, newData, cb) =>{
+        try{
+            const userIdObj =new ObjectId(userId)
+            con((err,db)=>{
+                if(err) return cb(err, false)
+                db.collection('user')
+                .updateOne(
+                    {_id:userIdObj},
+                    {$set: newData}
+                )
+                .then(cb(false, true))
+                .catch(e=>cb(e, false))
+            })
+        }
+        catch(er){
+            cb(er, false)
+        }
+    }
     static addAddr=(userId, data) =>{
         // try{
         //     const allUsers = deal.readDataFromJSON(fName)
