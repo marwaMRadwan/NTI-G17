@@ -48,6 +48,12 @@ const User = mongoose.model('User', {
     image:{
         type:String
     },
+    addresses:[
+        {
+            addressType:{type:String, required:true},
+            addressDetails:{type:String, required:true}
+        }
+    ],
     createdAt:{
         type:Date,
         default:Date.now()

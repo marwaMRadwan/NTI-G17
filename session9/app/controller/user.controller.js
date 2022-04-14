@@ -1,8 +1,10 @@
+const async = require('hbs/lib/async')
 const userModel = require('../../db/models/user.model')
 class User {
     static index = async(req,res)=> {
         try{
             const users = await userModel.find()
+
             res.render('all',{
                 pageTitle:"all users",
                 users,
@@ -39,6 +41,18 @@ class User {
                 errors, 
                 userData:req.body
             })
+        }
+    }
+    static showSingle = async(req,res)=>{
+        try{
+            const user = await userModel.findById(req.params.id)
+            res.render('single',{
+                pageTitle:"all users",
+                user
+        })
+        }
+        catch(e){
+            res.send(e.message)
         }
     }
 }

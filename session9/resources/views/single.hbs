@@ -2,14 +2,14 @@
 {{>navbar}}
 <section class="container my-4">
     <h4 class="text-primary">single Users</h4>
-    {{#unless ifFound}}
+    {{#unless user}}
     <div class="alert alert-danger">
         No Users found
     </div>
     {{else}}
     <table class="table table-stripped">
         <tr>
-            <td colspan="2">Id: {{user.id}}</td>
+            <td colspan="2">Id: {{user._id}}</td>
         </tr>
         <tr>
             <td>Name: {{user.name}}</td>
@@ -29,7 +29,7 @@
             </tr>
         </thead>
         <tbody>
-            {{#unless hasAddr}}
+            {{#unless user.addresses.length}}
             <tr class="alert alert-danger">
                 <td colspan="2" class="text-center">no addresses ye</td>
             </tr>
