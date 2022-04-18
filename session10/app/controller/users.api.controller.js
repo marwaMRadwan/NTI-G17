@@ -78,36 +78,40 @@ class User {
     }
     static edit = async(req,res)=>{
         try{
-            const user = await userModel.findById(req.params.id)
-            console.log(`edit user ${user.name}`);
-            res.render('edit',{
-                pageTitle:`edit user ${user.name}`,
-                user
-        })
+            const user = await userModel.findByIdAndUpdate(
+                req.params.id, 
+                req.body, 
+                { runValidators:true }
+                )
+                res.status(200).send({
+                    apiStatus:true,
+                    message:"data fetched successful"
+                })
+            }
+            catch(e){
+                res.status(500).send({
+                    apiStatus:false,
+                    message:e.message    
+                })
+    
         }
-        catch(e){
-            res.send(e.message)
         }
-
-    }
-
-    static editLogic = async(req,res)=>{
-        try{
-            const user = await userModel.findByIdAndUpdate(req.params.id, req.body)
-            res.redirect('/')
-        }
-        catch(e){
-            res.send(e.message)
-        }
-    }
     static del = async(req,res)=>{
         try{
             const user = await userModel.findByIdAndDelete(req.params.id)
-            res.redirect('/')
+            res.status(200).send({
+                apiStatus:true,
+                message:"data deleted successful"
+            })
         }
         catch(e){
-            res.send(e.message)
-        }
+            res.status(500).send({
+                apiStatus:false,
+                message:e.message    
+            })
+
+    }
+
     }
     
 

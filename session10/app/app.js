@@ -16,6 +16,6 @@ app.set("views", path.join(__dirname, "../resources/views"))
 hbs.registerPartials(path.join(__dirname, "../resources/layouts"))
 
 app.use(userRoutes)
-app.use("/api",userApiRoutes)
+app.use("/api",userApiRoutes) //localhost:3000/api
 app.get("*", (req,res)=> res.send("page not found"))
 module.exports = app
