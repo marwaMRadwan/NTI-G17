@@ -6,6 +6,7 @@ class User{
     static addPostLogic = (req,res)=>{
         const user = { ...req.body, id: Date.now(), addresses: [] }
         userHelper.add(user, (result)=>{
+           // if(!added) res.render('add',{msg:"title used before"})
             res.redirect('/')
         })
     }
