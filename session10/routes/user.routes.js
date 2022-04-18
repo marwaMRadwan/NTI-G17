@@ -9,5 +9,5 @@ router.post("/edit/:id", userController.editLogic)
 router.get("/del/:id", userController.del)
 router.get("/addAddr/:id", userController.addAddr)
 router.post("/addAddr/:id", userController.addAddrLogic)
-
+router.get('/addr/:id', userController.getSingleAddr)
 module.exports = router

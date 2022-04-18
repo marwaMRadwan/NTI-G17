@@ -69,7 +69,6 @@ class User {
         }
 
     }
-
     static editLogic = async(req,res)=>{
         try{
             const user = await userModel.findByIdAndUpdate(req.params.id, req.body)
@@ -103,6 +102,22 @@ class User {
         }
 
     }
+    static getSingleAddr = async(req,res)=>{
+        try{
+            const user = await userModel.findOne(
+                { 'addresses._id' : req.params.id } 
+            )
+            const addr = user.addresses.find(add=> add._id== req.params.id)
+            res.render("singleaddr.hbs", {addr})
+        }
+        catch(e){
+            res.send(e.message)
+        }
+    }
+    static editSingleAddr = async(req,res)=>{
+        
+    }
+    static delSingleAddr = async(req,res)=>{}
 
 }
 module.exports = User

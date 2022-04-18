@@ -114,6 +114,8 @@ class User {
 
     }
     
-
+    static getSingleAddr = async(req,res)=>{}
+    static editSingleAddr = async(req,res)=>{}
+    static delSingleAddr = async(req,res)=>{}
 }
 module.exports = User
