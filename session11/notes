@@ -1,0 +1,5 @@
+users , posts 
+
+user=> _id, fname, lname, dob, status, email, password, pImage
+
+post => _id, txt, file, type(txt, img, video)
