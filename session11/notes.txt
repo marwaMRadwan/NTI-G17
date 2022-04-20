@@ -7,5 +7,5 @@ post => _id, txt, file, type(txt, img, video), userId
 //upload files, relations(on delete , on show), paggination , sort, select 
 
 
-"start": "node index", //npm start
-"dev":"nodemon index" //npm run dev
+"start": "node index", ////npm start
+"dev":"nodemon index" ////npm run dev
