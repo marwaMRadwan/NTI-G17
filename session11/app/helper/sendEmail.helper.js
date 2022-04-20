@@ -1,5 +1,4 @@
 const nodemailer = require("nodemailer")
-
 const smtpConfig = {
     service:'gmail',
     auth:{
@@ -7,7 +6,6 @@ const smtpConfig = {
         pass:"123@Mero"
     }
 }
-
 const sendEmailMe = (reciverEmail) =>{
     try{
         const transporter = nodemailer.createTransport(smtpConfig)

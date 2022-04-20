@@ -1,5 +1,7 @@
 const userModel = require("../../database/models/user.model")
 const sendEmailMe = require("../helper/sendEmail.helper")
+const path = require("path")
+const fs = require("fs")
 class User{
     static register = async(req,res)=>{
         try{
@@ -100,6 +102,16 @@ class User{
             })
 
     }
+}
+static uploadImage = async  (req, res) => {
+    const imgDir = path.join(__dirname, `../../${req.file.path}`)
+    const newPath = `${imgDir}${path.extname(req.file.originalname)}`
+    fs.rename(imgDir, newPath , ()=>{})
+    req.user.pImage= `${req.file.path}${path.extname(req.file.originalname)}`
+    await req.user.save()
+    res.send({
+        user: req.user
+    })
 }
 }
 module.exports = User

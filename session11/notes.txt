@@ -1,0 +1,11 @@
+users , posts 
+
+user=> _id, fname, lname, dob, status, email, password, pImage
+
+post => _id, txt, file, type(txt, img, video), userId
+
+//upload files, relations(on delete , on show), paggination , sort, select 
+
+
+"start": "node index", //npm start
+"dev":"nodemon index" //npm run dev
