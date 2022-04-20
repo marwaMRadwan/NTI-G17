@@ -58,7 +58,11 @@ const userSchema = mongoose.Schema({
 }, {
     timestamps:true  //createdAt, updatedAt
 })
-
+userSchema.virtual('myPosts', {
+    ref:"Post",
+    localField:"_id",
+    foreignField: "userId"
+})
 userSchema.methods.toJSON = function(){
     const data = this.toObject()
     delete data.password
@@ -73,7 +77,10 @@ userSchema.pre('save', async function(){
     if(data.isModified("password"))
         data.password = await bcryptjs.hash(data.password, 15)
 })
-
+const PostModel = require("./post.model")
+userSchema.pre("findByIdAndDelete", async function(){
+    await PostModel.remove({userId: this._id})
+})
 userSchema.statics.login = async(email, password) =>{
     const user = await User.findOne({email})
     if(!user) throw new Error("invalid email")

@@ -24,7 +24,15 @@ class User{
     }
     static getAllUsers = async(req,res)=>{
         try{
-            const users = await userModel.find()         
+            // :pageNum/:limit
+            const pageCount = +req.params.limit
+            const pageNum = +req.params.pageNum  // start 0
+            const users = 
+                await userModel.find()
+                .sort({fname:-1})
+                .limit(pageCount)
+                .skip(pageCount*pageNum)
+
             res.status(200).send({
                 apiStatus:true,
                 data: users,
@@ -120,6 +128,14 @@ static uploadImage1 = async  (req, res) => {
         user: req.user
     })
 }
-
+static del = async(req,res)=>{
+    try{
+        const deleted = await userModel.findByIdAndDelete(req.user._id)
+        res.send({message:"deleted"})
+    }
+    catch(e){
+        res.send({error:e})
+    }
+}
 }
 module.exports = User
