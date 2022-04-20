@@ -2,8 +2,8 @@ const router = require("express").Router()
 const auth = require("../app/middleware/auth")
 const User = require("../app/controller/user.controller")
 const multer  = require('multer')
-const upload = multer({ dest: 'uploads/' })
-
+const upload1 = multer({ dest: 'uploads/' })
+const upload = require("../app/middleware/uploadFiles")
 
 router.post('/register', User.register)
 router.post('/login', User.login)
@@ -11,6 +11,6 @@ router.get('/all', auth, User.getAllUsers)
 router.get('/me', auth, User.me)
 router.get('/logout', auth, User.logout)
 router.get('/logoutAll', auth, User.logoutAll)
-router.post('/pImg', auth, upload.single('profile'), User.uploadImage)
-
+router.post('/pImg', auth, upload1.single('profile'), User.uploadImage)
+router.post("/myImage", auth, upload.single('image'), User.uploadImage1)
 module.exports = router

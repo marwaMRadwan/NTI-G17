@@ -113,5 +113,13 @@ static uploadImage = async  (req, res) => {
         user: req.user
     })
 }
+static uploadImage1 = async  (req, res) => {
+    req.user.pImage= `${req.file.path}`
+    await req.user.save()
+    res.send({
+        user: req.user
+    })
+}
+
 }
 module.exports = User
