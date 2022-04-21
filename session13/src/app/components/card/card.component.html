@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    <h1 [ngClass]="[className, className2 , 'border' , 'border-primary']">Lorem, ipsum dolor.</h1>
+
+                    <button [ngClass]="{'btn' : true , 'btn-primary' : btnFlag}">Read More</button>
+                    <button class="btn btn-danger" (click)="btnFlag = !btnFlag">
+                        Change button color
+                    </button>
+
+                    <input type="text" class="form-control" placeholder="enter your name" [ngStyle]="{'font-size' :inputFontSize , 
+                'border' : '5px solid maroon'}">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

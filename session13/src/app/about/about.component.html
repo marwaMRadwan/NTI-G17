@@ -6,7 +6,17 @@
 
 <h2>{{minValue(200 , 100)}}</h2>
 
-<input type="" #name  (input)="handleInput($event ,name )">
+<input type="" #name  (input)="handleInput($event ,name )"  (keyup.control.shift.enter)="handleEnter()">
 {{val}}
+
+<button (click)="handleIncrement()">Increment</button>
+{{num}}
+<button (click)="handleDecrement()">decrement</button>
+
+<input [type]="inputType" [placeholder]="inputPlaceholder" [class]="className">
+<input [type]="value">
+<button (click)="handlePassword()" class="btn btn-primary">Show Password</button>
+
+<textarea [(ngModel)]="inputModel" class="form-control"></textarea>
 
 

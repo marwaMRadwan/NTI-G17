@@ -9,6 +9,12 @@ export class AboutComponent implements OnInit {
   fName : string = "nouran"
   lName : any = "ahmed"
   val :any = ""
+  num:number = 0
+  inputPlaceholder = "enter your Name"
+  inputType="text"
+  className = "border"
+  value="password"
+  inputModel ="nouran"
   constructor() { }
 
   ngOnInit(): void {
@@ -26,6 +32,20 @@ export class AboutComponent implements OnInit {
     console.log(e.target.value)
     console.log(inputValue.value)
     this.val = inputValue.value
+  }
+  handleIncrement(){
+    this.num++
+  }
+  handleDecrement(){
+    this.num--
+  }
+
+  handleEnter(){
+    console.log("enter")
+  }
+
+  handlePassword(){
+    this.value = "text"
   }
 
 
