@@ -1,0 +1,12 @@
+<div class="row gy-4">
+    <div class="col-4" *ngFor="let p of data">
+        <div class="card">
+            <img src="assets\images\tree-736885__340.jpeg" class="card-img-top">
+            <div class="card-body">
+                <h4>{{p.title}}</h4>
+                <p>{{p.body}}</p>
+                <button class="btn btn-primary" [routerLink]="['/posts' , p.id]" >Show Single post</button>
+            </div>
+        </div>
+    </div>
+</div>

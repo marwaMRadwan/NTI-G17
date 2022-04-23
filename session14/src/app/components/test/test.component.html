@@ -1,0 +1,25 @@
+<div *ngIf="flag ; then test else data">
+  
+</div>
+
+<ng-template #data>
+    <h1>Angular</h1>
+</ng-template>
+<ng-template #test>
+    <h1>Typescript</h1>
+</ng-template>
+
+
+<div [ngSwitch]="num" >
+    <ng-container *ngFor="let m of month ; let i = index">
+        <div *ngSwitchCase="i" >{{m}}</div>
+
+    </ng-container>
+
+    <!-- <div *ngSwitchCase="'1'">one</div>
+    <div *ngSwitchCase="'2'">two</div>
+    <div *ngSwitchCase="'3'">three</div>
+    <div *ngSwitchCase="'4'">four</div> -->
+    <div *ngSwitchDefault>default</div>
+
+</div>

@@ -1,0 +1,9 @@
+{{date | date : "yyyy/M/dd"}}
+
+<div *ngFor="let post of data | slice : 0:4">
+    <h1>{{post.id}} - {{post.title | uppercase}}</h1>
+    <h2>{{staticData | lowercase}}</h2>
+    <h2>{{post.body | slice:0:10 }}</h2>
+
+</div>
+{{data | json}}
