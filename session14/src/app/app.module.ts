@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,11 @@ import { ErrorComponent } from './pages/error/error.component';
 import { SinglepostComponent } from './pages/singlepost/singlepost.component';
 import { GalleryComponent } from './pages/gallery/gallery.component';
 import { PostsComponent } from './pages/posts/posts.component';
+import { ArticleComponent } from './pages/article/article.component';
+import { SingleArticleComponent } from './pages/single-article/single-article.component';
+import { ProductsComponent } from './components/products/products.component';
+import { ParentComponent } from './components/parent/parent.component';
+import { ChildComponent } from './components/child/child.component';
 
 @NgModule({
   declarations: [
@@ -30,11 +36,17 @@ import { PostsComponent } from './pages/posts/posts.component';
     ErrorComponent,
     SinglepostComponent,
     GalleryComponent,
-    PostsComponent
+    PostsComponent,
+    ArticleComponent,
+    SingleArticleComponent,
+    ProductsComponent,
+    ParentComponent,
+    ChildComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

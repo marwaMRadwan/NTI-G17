@@ -1,0 +1,14 @@
+<form>
+    <div class="row">
+        <div class="col-6">
+            <input type="text" placeholder="enter your name" class="form-control" [(ngModel)]="model.userName" name="userName" >
+        </div>
+        <!-- {{model.userName}} -->
+        <div class="col-6">
+            <input type="email" placeholder="enter your email" class="form-control"  [(ngModel)]="model.email" name="email">
+        </div>
+        <div class="col-4 my-3">
+            <button (click)="addUser()" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</form>

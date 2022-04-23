@@ -1,0 +1,16 @@
+<app-child (sendingData)="handleUsers($event)"></app-child>
+
+<table class="table">
+    <tr>
+        <th>UserName</th>
+        <th>userEmail</th>
+    </tr>
+    <tr *ngFor="let user of userData">
+        <td>{{user.userName}}</td>
+        <td>{{user.email}}</td>
+    </tr>
+</table>
+
+<!-- <ng-template #event>
+
+</ng-template> -->
