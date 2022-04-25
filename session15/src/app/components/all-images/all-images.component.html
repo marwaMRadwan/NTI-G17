@@ -1,0 +1,12 @@
+<div class="row">
+    <img src="assets/images/loading.gif" height="600" *ngIf="!isLoaded ; else imgData">
+    <ng-template #imgData>
+        <div class="col-3" *ngFor="let img of showImages"> 
+            <!-- <img src="{{img.url}}"  class="img-fluid"> -->
+            <img [src]="img.url"  class="img-fluid">
+        </div>
+
+    </ng-template>
+</div>
+
+{{global.appName}}
