@@ -1,0 +1,30 @@
+<form [formGroup]="userData" (ngSubmit)="handleSubmit()">
+    <div class="row gy-4" >
+        <div class="col-6">
+            <input type="text" placeholder="enter your Phone" formControlName="phone"  class="form-control">
+            <div class="alert alert-danger" *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)">
+                <!-- {{phone?.errors| json}} -->
+                <div *ngIf="phone?.errors?.['required']">
+                    phone is required
+                </div>
+                <div *ngIf="phone?.errors?.['minlength']">
+                    min length = 11 
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <input type="password" placeholder="enter your Password" formControlName="password" class="form-control">
+            <div class="alert alert-danger"  *ngIf="isSubmitted && password?.invalid">
+                <div *ngIf="password?.errors?.['required']">
+                    password is required
+                </div>
+                <div *ngIf="password?.errors?.['minlength']">
+                    min length = 5 
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <button class="btn btn-success">Log in</button>
+        </div>
+    </div>
+</form>
