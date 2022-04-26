@@ -33,9 +33,9 @@ export class LoginComponent implements OnInit {
         }
         else {
           this.toastr.success('login successfuly')
+          localStorage.setItem("token" , res.access_token)
           // this.router.navigateByUrl("/markets")
           this.router.navigate(['markets'])
-
         }
       })
     }

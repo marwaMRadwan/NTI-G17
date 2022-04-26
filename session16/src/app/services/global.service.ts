@@ -11,4 +11,7 @@ export class GlobalService {
   login(obj:any):Observable<any>{
    return this.http.post(`${this.url}auth/Login` , obj)
   }
+  allMarket():Observable<any>{
+    return this.http.get(`${this.url}ListMarkets/0/10`)
+  }
 }
