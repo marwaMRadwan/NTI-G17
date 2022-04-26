@@ -15,7 +15,7 @@
         <div class="col-6">
             <input type="password" placeholder="enter your Password" formControlName="password" class="form-control">
             <div class="alert alert-danger"  *ngIf="isSubmitted && password?.invalid">
-                <div *ngIf="password?.errors?.['required']">
+                <div *ngIf="logindata?.['password']?.errors?.['required']">
                     password is required
                 </div>
                 <div *ngIf="password?.errors?.['minlength']">
