@@ -14,4 +14,8 @@ export class GlobalService {
   allMarket():Observable<any>{
     return this.http.get(`${this.url}ListMarkets/0/10`)
   }
+  updateUserImage(obj:any):Observable<any>{
+    return this.http.post(`${this.url}auth/UpdateUserImage` , obj)
+    
+  }
 }
