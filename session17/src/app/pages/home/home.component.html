@@ -1,1 +1,11 @@
-<p>home works!</p>
+<div class="row">
+    <div class="col-3" *ngFor="let role of showRoles">
+        <div class="card" routerLink="/providers/{{role.slug}}">
+            <img src="{{global.imgUrl}}{{role.image}}">
+            <div class="card-body">
+                <h5>{{role.title}}</h5>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+  showRoles : any = []
+  constructor(public global:GlobalService) { }
 
   ngOnInit(): void {
+    this.global.loadRoles().subscribe(roles =>{
+      this.showRoles = roles.data 
+      console.log(this.showRoles)
+    })
   }
 
 }

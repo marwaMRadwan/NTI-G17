@@ -1,0 +1,15 @@
+
+-- http://dashboard.roshetah.com/api/blog/1/0/2 ==> all Blogs (pagination)
+
+-- http://dashboard.roshetah.com/api/SingleBlog/5/1 ==> single blog (textarea)
+
+-- http://dashboard.roshetah.com/api/auth/UserBlogComment ==> blog comment 
+
+-- blog comment ==> {
+                     "article_id" : 5,
+                     "comment" : "test comment data loreeem"
+                    
+                    }
+                ==> Authorization 
+
+                ==> response (toastr)   

@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-3" *ngFor="let provider of providers | paginate: { id: 'doctors',
+    itemsPerPage: 10,
+    currentPage: p,
+    totalItems: total }">
+        <div class="card">
+            <img src="{{global.imgUrl}}{{provider.image}}" class="img-fluid" *ngIf="provider.image ; else noimage">
+            <ng-template #noimage>
+                <img src="assets/images/No_Image.jpg"  class="img-fluid">
+            </ng-template>
+            <div class="card-body">
+                <h4>{{provider.name}}</h4>
+            </div>
+        </div>
+    </div>
+    <pagination-controls  id="doctors"
+                      (pageChange)="pageChanged($event)"
+                      (pageBoundsCorrection)="pageChanged($event)"
+                      [maxSize]="9"
+                      [directionLinks]="true"
+                      [autoHide]="true"
+                      [responsive]="true"
+                      previousLabel="Previous"
+                      nextLabel="Next"
+                      >
+</pagination-controls>
+</div>

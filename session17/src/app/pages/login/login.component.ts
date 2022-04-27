@@ -14,7 +14,9 @@ export class LoginComponent implements OnInit {
     password:new FormControl("" , [Validators.required])
   })
   token = localStorage.getItem('token')
+
   constructor(private global:GlobalService , private router:Router) { 
+    // this.global.navbarFlag=false
    if (this.token) this.router.navigateByUrl("/")
   }
 
