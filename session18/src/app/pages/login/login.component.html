@@ -1,0 +1,13 @@
+<form [formGroup]="data" (ngSubmit)="handleSubmit()">
+    <div class="row">
+        <div class="col-6">
+            <input type="text" class="form-control" formControlName="phone">
+        </div>
+        <div class="col-6">
+            <input type="password" class="form-control" formControlName="password">
+        </div>
+        <div class="col-4">
+            <button class="btn btn-primary mt-3">submit</button>
+        </div>
+    </div>
+</form>
